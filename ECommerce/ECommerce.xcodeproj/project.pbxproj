@@ -8,10 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		184F538222A2570F003CB105 /* SubCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F538122A2570F003CB105 /* SubCategoriesViewController.swift */; };
+		184F538422A25862003CB105 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F538322A25862003CB105 /* Constants.swift */; };
 		18BC507D22A04CF0005DE5F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC507C22A04CF0005DE5F4 /* AppDelegate.swift */; };
 		18BC507F22A04CF0005DE5F4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC507E22A04CF0005DE5F4 /* CategoriesViewController.swift */; };
 		18BC508222A04CF0005DE5F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BC508022A04CF0005DE5F4 /* Main.storyboard */; };
-		18BC508522A04CF0005DE5F4 /* ECommerce.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 18BC508322A04CF0005DE5F4 /* ECommerce.xcdatamodeld */; };
 		18BC508722A04CF1005DE5F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18BC508622A04CF1005DE5F4 /* Assets.xcassets */; };
 		18BC508A22A04CF1005DE5F4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BC508822A04CF1005DE5F4 /* LaunchScreen.storyboard */; };
 		18BC509522A04CF1005DE5F4 /* ECommerceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC509422A04CF1005DE5F4 /* ECommerceTests.swift */; };
@@ -54,11 +54,11 @@
 
 /* Begin PBXFileReference section */
 		184F538122A2570F003CB105 /* SubCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesViewController.swift; sourceTree = "<group>"; };
+		184F538322A25862003CB105 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		18BC507922A04CF0005DE5F4 /* ECommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BC507C22A04CF0005DE5F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18BC507E22A04CF0005DE5F4 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		18BC508122A04CF0005DE5F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		18BC508422A04CF0005DE5F4 /* ECommerce.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ECommerce.xcdatamodel; sourceTree = "<group>"; };
 		18BC508622A04CF1005DE5F4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		18BC508922A04CF1005DE5F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		18BC508B22A04CF1005DE5F4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -145,7 +145,6 @@
 				18BC508622A04CF1005DE5F4 /* Assets.xcassets */,
 				18BC508822A04CF1005DE5F4 /* LaunchScreen.storyboard */,
 				18BC508B22A04CF1005DE5F4 /* Info.plist */,
-				18BC508322A04CF0005DE5F4 /* ECommerce.xcdatamodeld */,
 			);
 			path = ECommerce;
 			sourceTree = "<group>";
@@ -184,6 +183,7 @@
 			children = (
 				18BC50B922A05056005DE5F4 /* Loading View */,
 				18BC50B722A04F36005DE5F4 /* Alerts.swift */,
+				184F538322A25862003CB105 /* Constants.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -376,12 +376,12 @@
 				18BC50D722A0602F005DE5F4 /* CategoryTableviewCell.swift in Sources */,
 				18BC50C722A051D1005DE5F4 /* Product.swift in Sources */,
 				18BC50C622A051D1005DE5F4 /* Tax.swift in Sources */,
-				18BC508522A04CF0005DE5F4 /* ECommerce.xcdatamodeld in Sources */,
 				18BC50B222A04E30005DE5F4 /* Reachability.swift in Sources */,
 				18BC507D22A04CF0005DE5F4 /* AppDelegate.swift in Sources */,
 				18BC50B322A04E30005DE5F4 /* ServiceManager.swift in Sources */,
 				18BC50BC22A05056005DE5F4 /* LoadingView.swift in Sources */,
 				184F538222A2570F003CB105 /* SubCategoriesViewController.swift in Sources */,
+				184F538422A25862003CB105 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -704,19 +704,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		18BC508322A04CF0005DE5F4 /* ECommerce.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				18BC508422A04CF0005DE5F4 /* ECommerce.xcdatamodel */,
-			);
-			currentVersion = 18BC508422A04CF0005DE5F4 /* ECommerce.xcdatamodel */;
-			path = ECommerce.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 18BC507122A04CF0005DE5F4 /* Project object */;
 }

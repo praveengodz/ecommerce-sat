@@ -12,13 +12,18 @@ class SubCategoriesViewController: UIViewController {
 
     @IBOutlet weak var table: UITableView!
     
+    var categories = [Category]()
+    var subCategoryIds = [Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.setupView()
     }
     
-
+    func setupView() {
+        table.register(UINib(nibName: "SubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "SubcategoryTableViewCellID")
+        table.tableFooterView = UIView()
+    }
     /*
     // MARK: - Navigation
 
@@ -29,4 +34,28 @@ class SubCategoriesViewController: UIViewController {
     }
     */
 
+}
+
+extension SubCategoriesViewController : UITableViewDelegate, UITableViewDataSource {
+    
+    // MARK: - UITableView
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return subCategoryIds.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SubcategoryTableViewCellID", for: indexPath) as! SubcategoryTableViewCell
+        let subcategory = categories.filter{$0.id == subCategoryIds[indexPath.row]}
+        cell.setupCell(category: subcategory.first!)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
 }

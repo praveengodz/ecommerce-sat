@@ -56,9 +56,26 @@ class CategoriesViewController: UIViewController {
             }
         }
     }
+    
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == subCategorySegueID {
+            let destinationVC = segue.destination as! SubCategoriesViewController
+            let indexPath = sender as! IndexPath
+            let subCategoryIds = mainCategories[indexPath.section].childCategories
+            let subcategory = categories.filter{$0.id == subCategoryIds![indexPath.row]}
+            destinationVC.categories = categories
+            destinationVC.subCategoryIds = (subcategory.first?.childCategories)!
+        }
+     }
+    
 }
 
 extension CategoriesViewController : UITableViewDelegate, UITableViewDataSource {
+    
     // MARK: - UITableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.mainCategories.count
@@ -92,6 +109,6 @@ extension CategoriesViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.performSegue(withIdentifier: subCategorySegueID, sender: indexPath)
     }
 }
