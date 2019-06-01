@@ -20,6 +20,8 @@ class WebserviceManager: NSObject {
                     let category = try JSONDecoder().decode([Category].self, from: categoryJSONData)
                     let rankJSONData = try JSONSerialization.data(withJSONObject: rankJSON as Any , options: .prettyPrinted)
                     let rank = try JSONDecoder().decode([Rank].self, from: rankJSONData)
+                    Storage.store(category, to: .documents, as: kCategoryListKey)
+                    Storage.store(rank, to: .documents, as: kRankListKey)
                     successCallBack([category,rank] as AnyObject)
                 }
                 catch {

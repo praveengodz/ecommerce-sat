@@ -7,12 +7,10 @@
 //
 
 import UIKit
-protocol CategoryTableviewCellDelegate: NSObjectProtocol {
-    func CategoryTableviewCell(_ categoryTableviewCell: CategoryTableviewCell?, categoryButtonDidTapped categoryButton: UIButton)
-}
+
 class CategoryTableviewCell: UITableViewCell {
 
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,7 +18,7 @@ class CategoryTableviewCell: UITableViewCell {
     }
 
     func setupCell(category:Category) {
-        self.titleLabel.text = category.name
+        self.contentLabel.text = category.name
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {

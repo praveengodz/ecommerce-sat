@@ -7,13 +7,14 @@
 
 import Foundation
 
-struct Product : Codable {
+class Product : Codable {
     
     let dateAdded : String?
     let id : Int?
     let name : String?
     let tax : Tax?
     let variants : [Variant]?
+    var sortValue:Int = 0
     
     enum CodingKeys: String, CodingKey {
         case dateAdded = "date_added"
@@ -23,7 +24,7 @@ struct Product : Codable {
         case variants = "variants"
     }
     
-    init(from decoder: Decoder) throws {
+    required init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         dateAdded = try values.decodeIfPresent(String.self, forKey: .dateAdded)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
