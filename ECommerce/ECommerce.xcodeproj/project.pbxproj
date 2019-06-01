@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		184F538222A2570F003CB105 /* SubCategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F538122A2570F003CB105 /* SubCategoriesViewController.swift */; };
 		184F538422A25862003CB105 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F538322A25862003CB105 /* Constants.swift */; };
+		184F538622A25C6E003CB105 /* ProductListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F538522A25C6E003CB105 /* ProductListViewController.swift */; };
+		184F538822A26FE8003CB105 /* ProductDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F538722A26FE8003CB105 /* ProductDetailViewController.swift */; };
+		184F538A22A274B7003CB105 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F538922A274B7003CB105 /* String.swift */; };
+		184F538D22A28176003CB105 /* VariantsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F538B22A28176003CB105 /* VariantsTableViewCell.swift */; };
+		184F538E22A28176003CB105 /* VariantsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184F538C22A28176003CB105 /* VariantsTableViewCell.xib */; };
+		184F539222A28B5B003CB105 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F539122A28B5B003CB105 /* Storage.swift */; };
 		18BC507D22A04CF0005DE5F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC507C22A04CF0005DE5F4 /* AppDelegate.swift */; };
 		18BC507F22A04CF0005DE5F4 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC507E22A04CF0005DE5F4 /* CategoriesViewController.swift */; };
 		18BC508222A04CF0005DE5F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18BC508022A04CF0005DE5F4 /* Main.storyboard */; };
@@ -55,6 +61,12 @@
 /* Begin PBXFileReference section */
 		184F538122A2570F003CB105 /* SubCategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriesViewController.swift; sourceTree = "<group>"; };
 		184F538322A25862003CB105 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		184F538522A25C6E003CB105 /* ProductListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductListViewController.swift; sourceTree = "<group>"; };
+		184F538722A26FE8003CB105 /* ProductDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewController.swift; sourceTree = "<group>"; };
+		184F538922A274B7003CB105 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		184F538B22A28176003CB105 /* VariantsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VariantsTableViewCell.swift; sourceTree = "<group>"; };
+		184F538C22A28176003CB105 /* VariantsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VariantsTableViewCell.xib; sourceTree = "<group>"; };
+		184F539122A28B5B003CB105 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		18BC507922A04CF0005DE5F4 /* ECommerce.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ECommerce.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18BC507C22A04CF0005DE5F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18BC507E22A04CF0005DE5F4 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
@@ -184,6 +196,8 @@
 				18BC50B922A05056005DE5F4 /* Loading View */,
 				18BC50B722A04F36005DE5F4 /* Alerts.swift */,
 				184F538322A25862003CB105 /* Constants.swift */,
+				184F538922A274B7003CB105 /* String.swift */,
+				184F539122A28B5B003CB105 /* Storage.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -217,6 +231,8 @@
 				18BC50D222A05FF8005DE5F4 /* SubcategoryTableViewCell.xib */,
 				18BC50D522A0602F005DE5F4 /* CategoryTableviewCell.swift */,
 				18BC50D622A0602F005DE5F4 /* CategoryTableviewCell.xib */,
+				184F538B22A28176003CB105 /* VariantsTableViewCell.swift */,
+				184F538C22A28176003CB105 /* VariantsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -226,6 +242,8 @@
 			children = (
 				18BC507E22A04CF0005DE5F4 /* CategoriesViewController.swift */,
 				184F538122A2570F003CB105 /* SubCategoriesViewController.swift */,
+				184F538522A25C6E003CB105 /* ProductListViewController.swift */,
+				184F538722A26FE8003CB105 /* ProductDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -338,6 +356,7 @@
 				18BC50BD22A05056005DE5F4 /* LoadingView.xib in Resources */,
 				18BC50D422A05FF8005DE5F4 /* SubcategoryTableViewCell.xib in Resources */,
 				18BC508722A04CF1005DE5F4 /* Assets.xcassets in Resources */,
+				184F538E22A28176003CB105 /* VariantsTableViewCell.xib in Resources */,
 				18BC508222A04CF0005DE5F4 /* Main.storyboard in Resources */,
 				18BC50D822A0602F005DE5F4 /* CategoryTableviewCell.xib in Resources */,
 			);
@@ -365,21 +384,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				18BC50C822A051D1005DE5F4 /* Variant.swift in Sources */,
+				184F539222A28B5B003CB105 /* Storage.swift in Sources */,
 				18BC50D322A05FF8005DE5F4 /* SubcategoryTableViewCell.swift in Sources */,
 				18BC50B522A04E30005DE5F4 /* WebserviceManager.swift in Sources */,
 				18BC50C522A051D1005DE5F4 /* Category.swift in Sources */,
 				18BC50B422A04E30005DE5F4 /* ServiceURLMapper.swift in Sources */,
+				184F538D22A28176003CB105 /* VariantsTableViewCell.swift in Sources */,
 				18BC50B822A04F36005DE5F4 /* Alerts.swift in Sources */,
 				18BC50CA22A053A6005DE5F4 /* Rank.swift in Sources */,
 				18BC50CC22A05404005DE5F4 /* RankProduct.swift in Sources */,
 				18BC507F22A04CF0005DE5F4 /* CategoriesViewController.swift in Sources */,
 				18BC50D722A0602F005DE5F4 /* CategoryTableviewCell.swift in Sources */,
 				18BC50C722A051D1005DE5F4 /* Product.swift in Sources */,
+				184F538622A25C6E003CB105 /* ProductListViewController.swift in Sources */,
 				18BC50C622A051D1005DE5F4 /* Tax.swift in Sources */,
 				18BC50B222A04E30005DE5F4 /* Reachability.swift in Sources */,
 				18BC507D22A04CF0005DE5F4 /* AppDelegate.swift in Sources */,
 				18BC50B322A04E30005DE5F4 /* ServiceManager.swift in Sources */,
+				184F538A22A274B7003CB105 /* String.swift in Sources */,
 				18BC50BC22A05056005DE5F4 /* LoadingView.swift in Sources */,
+				184F538822A26FE8003CB105 /* ProductDetailViewController.swift in Sources */,
 				184F538222A2570F003CB105 /* SubCategoriesViewController.swift in Sources */,
 				184F538422A25862003CB105 /* Constants.swift in Sources */,
 			);

@@ -13,7 +13,9 @@ class SubCategoriesViewController: UIViewController {
     @IBOutlet weak var table: UITableView!
     
     var categories = [Category]()
+    var ranks = [Rank]()
     var subCategoryIds = [Int]()
+    var categoryName:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,18 +23,23 @@ class SubCategoriesViewController: UIViewController {
     }
     
     func setupView() {
-        table.register(UINib(nibName: "SubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "SubcategoryTableViewCellID")
+        table.register(UINib(nibName: "SubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: SubcategoryTableViewCellID)
         table.tableFooterView = UIView()
+        self.title = categoryName
     }
-    /*
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == productListSegueID {
+            let destinationVC = segue.destination as! ProductListViewController
+            let indexPath = sender as! IndexPath
+            let subcategory = categories.filter{$0.id == subCategoryIds[indexPath.row]}
+            destinationVC.category = subcategory.first
+            destinationVC.ranks = self.ranks
+        }
     }
-    */
+    
 
 }
 
@@ -45,7 +52,7 @@ extension SubCategoriesViewController : UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SubcategoryTableViewCellID", for: indexPath) as! SubcategoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SubcategoryTableViewCellID, for: indexPath) as! SubcategoryTableViewCell
         let subcategory = categories.filter{$0.id == subCategoryIds[indexPath.row]}
         cell.setupCell(category: subcategory.first!)
         return cell
@@ -56,6 +63,6 @@ extension SubCategoriesViewController : UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        self.performSegue(withIdentifier: productListSegueID, sender: indexPath)
     }
 }

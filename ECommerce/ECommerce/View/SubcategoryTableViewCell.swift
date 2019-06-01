@@ -10,7 +10,7 @@ import UIKit
 
 class SubcategoryTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var subcategoryLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,7 +18,7 @@ class SubcategoryTableViewCell: UITableViewCell {
     }
 
     func setupCell(category:Category) {
-        self.subcategoryLabel.text = category.name
+        self.contentLabel.text = category.name
     }
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

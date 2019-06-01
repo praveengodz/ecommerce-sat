@@ -23,44 +23,53 @@ class CategoriesViewController: UIViewController {
     }
 
     func setupView() {
-        table.register(UINib(nibName: "CategoryTableviewCell", bundle: nil), forCellReuseIdentifier: "CategoryTableviewCellID")
-        table.register(UINib(nibName: "SubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: "SubcategoryTableViewCellID")
+        table.register(UINib(nibName: "CategoryTableviewCell", bundle: nil), forCellReuseIdentifier: CategoryTableviewCellID)
+        table.register(UINib(nibName: "SubcategoryTableViewCell", bundle: nil), forCellReuseIdentifier: SubcategoryTableViewCellID)
         table.tableFooterView = UIView()
+        self.title = "Main Categories"
     }
     
     func getProducts() {
-        LoadingView.sharedInstance.showActivityIndicatorWithMessage(msg: "")
-        LoadingView.sharedInstance.center = self.view.center
-        WebserviceManager.getProducts(sender: self, successCallBack: { (result) in
-            DispatchQueue.main.async {
-                LoadingView.sharedInstance.hideActivityIndicator()
-                let res = result as! Array<Any>
-                self.categories = res[0] as! [Category]
-                self.ranks = res[1] as! [Rank]
-                let tempCategory = self.categories.filter {$0.childCategories?.count != 0}
-                var childCatids = [Int]()
-                for temp in tempCategory {
-                    childCatids.append(contentsOf: temp.childCategories!)
+        let categoryList = Storage.retrieve(kCategoryListKey, from: .documents, as: [Category].self)
+        let rankList = Storage.retrieve(kRankListKey, from: .documents, as: [Rank].self)
+        if categoryList != nil && rankList != nil {
+            self.filterData(caetgory: categoryList!, rank: rankList!)
+        } else {
+            LoadingView.sharedInstance.showActivityIndicatorWithMessage(msg: "")
+            LoadingView.sharedInstance.center = self.view.center
+            WebserviceManager.getProducts(sender: self, successCallBack: { (result) in
+                DispatchQueue.main.async {
+                    LoadingView.sharedInstance.hideActivityIndicator()
+                    let res = result as! Array<Any>
+                    self.filterData(caetgory: res[0] as! [Category], rank: res[1] as! [Rank])
                 }
-                for mainCategory in tempCategory {
-                    if childCatids.contains(mainCategory.id!) == false {
-                        self.mainCategories.append(mainCategory)
-                    }
+            }) { (error) in
+                DispatchQueue.main.async {
+                    LoadingView.sharedInstance.hideActivityIndicator()
+                    Alerts.sharedInstance.showAlertWithSingleButton(message: "Product details not available", sender: self)
                 }
-                self.table.reloadData()
-            }
-        }) { (error) in
-            DispatchQueue.main.async {
-                LoadingView.sharedInstance.hideActivityIndicator()
-                Alerts.sharedInstance.showAlertWithSingleButton(message: "Product details not available", sender: self)
             }
         }
     }
     
+    func filterData(caetgory:[Category],rank:[Rank]) {
+        self.categories = caetgory
+        self.ranks = rank
+        let tempCategory = self.categories.filter {$0.childCategories?.count != 0}
+        var childCatids = [Int]()
+        for temp in tempCategory {
+            childCatids.append(contentsOf: temp.childCategories!)
+        }
+        for mainCategory in tempCategory {
+            if childCatids.contains(mainCategory.id!) == false {
+                self.mainCategories.append(mainCategory)
+            }
+        }
+        self.table.reloadData()
+    }
     
      // MARK: - Navigation
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
      override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == subCategorySegueID {
             let destinationVC = segue.destination as! SubCategoriesViewController
@@ -69,6 +78,8 @@ class CategoriesViewController: UIViewController {
             let subcategory = categories.filter{$0.id == subCategoryIds![indexPath.row]}
             destinationVC.categories = categories
             destinationVC.subCategoryIds = (subcategory.first?.childCategories)!
+            destinationVC.categoryName = subcategory.first!.name
+            destinationVC.ranks = self.ranks
         }
      }
     
@@ -91,13 +102,13 @@ extension CategoriesViewController : UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerCell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableviewCellID") as! CategoryTableviewCell
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: CategoryTableviewCellID) as! CategoryTableviewCell
         headerCell.setupCell(category: mainCategories[section])
         return headerCell.contentView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SubcategoryTableViewCellID", for: indexPath) as! SubcategoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: SubcategoryTableViewCellID, for: indexPath) as! SubcategoryTableViewCell
         let subCategoryIds = mainCategories[indexPath.section].childCategories
         let subcategory = categories.filter{$0.id == subCategoryIds![indexPath.row]}
         cell.setupCell(category: subcategory.first!)

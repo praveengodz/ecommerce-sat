@@ -35,7 +35,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="titleLabel" destination="8lU-Ky-cUc" id="j0L-Df-2ND"/>
+                <outlet property="contentLabel" destination="8lU-Ky-cUc" id="ENp-zn-0HS"/>
             </connections>
         </tableViewCell>
     </objects>
